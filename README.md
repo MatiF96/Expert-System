@@ -10,5 +10,6 @@ e) wszystkie moduły powinny być przetestowane (testy automatyczne/regresyjne i
 f) sieć neuronowa powinna być przeanalizowana pod względem ilości neuronów/warstw  
 
 W zadaniu powinna być wykorzystana jedna z baz danych:
-a) https://www.kaggle.com/uciml/pima-indians-diabetes-database -- sieć klasyczna  
-b) https://www.kaggle.com/kmader/siim-medical-images  -- sieć konwolucyjna
+
+a) https://www.kaggle.com/uciml/pima-indians-diabetes-database - sieć klasyczna  
+b) https://www.kaggle.com/kmader/siim-medical-images - sieć konwolucyjna
