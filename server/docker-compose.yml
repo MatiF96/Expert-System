@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  clinicsystem:
+    build:
+      context: ./ClinicSystem
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - 80:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5454:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: clinicdb
