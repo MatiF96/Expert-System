@@ -1,4 +1,6 @@
 ﻿using System;
+using ClinicSystem.DTO;
+using ClinicSystem.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -45,6 +47,14 @@ namespace ClinicSystem.Database
                 entity.Property(e => e.AccountType)
                     .IsRequired()
                     .HasColumnName("account_type");
+                entity.HasData(new Account
+                {
+                    AccountId = -1,
+                    AccountType = UserRole.Admin,
+                    AccountLogin = "admin123",
+                    AccountFullname = new RSAHandler().Encrypt("Litościwie nam panujący Pan Admin"),
+                    AccountPassword = new RSAHandler().Encrypt("admin123")
+                });
             });
 
             modelBuilder.Entity<Appointment>(entity =>
