@@ -26,7 +26,7 @@ namespace NeuralNet
             return preparedData;
         }
 
-        public static void NormalizeValues(float[][] data)
+        public static (float[] min, float[] max) NormalizeValues(float[][] data)
         {
             float[] max = new float[data[0].Length];
             float[] min = new float[data[0].Length];
@@ -53,6 +53,7 @@ namespace NeuralNet
                     item[i] = (item[i] - min[i]) / (max[i] - min[i]);
                 }
             }
+            return (min, max);
 
         }
         public static (float[] First, float[] Second)[] FormatData(float[][] data)

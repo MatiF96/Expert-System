@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mW8CCSVZmsCwMbD0dWZ/CVHOpQjc7j86Kfe+xNcsMtYkVQ6OPknMR2tBjwmW73RrohctLGlyqB0AfM+Me/ZZIQ==",
+  "dgSpecHash": "bEKJ6UscoVcAQv+nrM4dHRTzLG0d0FAkbuWaV5fpVyd3qiNgJ6Kwn/CD6/sp5FZg+aEVOmkr4RsT5AX+0zdhiA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matif\\source\\repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj",
+  "projectFilePath": "C:\\Users\\matif\\Source\\Repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matif\\.nuget\\packages\\alea\\3.0.4\\alea.3.0.4.nupkg.sha512",
     "C:\\Users\\matif\\.nuget\\packages\\fsharp.core\\4.2.3\\fsharp.core.4.2.3.nupkg.sha512",

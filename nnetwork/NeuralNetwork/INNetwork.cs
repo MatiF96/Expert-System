@@ -14,5 +14,6 @@ namespace NeuralNet
         INeuralNetwork Network { get; }
         Task<TrainingSessionResult> Train(ITrainingDataset dataset);
         bool Decide(float[] input);
+        bool CheckPatient(float[] input);
     }
 }
