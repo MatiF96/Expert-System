@@ -108,7 +108,8 @@ namespace ClinicSystem
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IAppointmentsService, AppointmentsService>();
             services.AddScoped<IUsersService, UsersService>();
-
+            //services.AddScoped<INNetwork, NNetwork>();
+            services.AddScoped<INeuralNetworkService, NeuralNetworkService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
