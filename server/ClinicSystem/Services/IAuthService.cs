@@ -12,5 +12,6 @@ namespace ClinicSystem.Services
         Task<UserDto> Login(LoginDto credentials);
         Task<bool> UserExists(string username);
         Task<UserDto> GetUserInfo(int userId);
+        Task<bool> ChangePassword(int userId, ChangePasswordDto passwordDto);
     }
 }

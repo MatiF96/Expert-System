@@ -18,6 +18,19 @@ namespace ClinicSystem.Services
             _passwordService = passwordService;
         }
 
+        public async Task<bool> ChangePassword(int userId, ChangePasswordDto passwordDto)
+        {
+            var account = await _ctx.Accounts.FindAsync(userId);
+            if (account == null || !_passwordService.IsHashEqual(passwordDto.CurrentPassword, account.AccountPassword))
+            {
+                return false;
+            }
+            account.AccountPassword = _passwordService.Hash(passwordDto.NewPassword);
+            _ctx.Accounts.Update(account);
+            await _ctx.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<UserDto> GetUserInfo(int userId)
         {
             var account = await _ctx.Accounts.FindAsync(userId);

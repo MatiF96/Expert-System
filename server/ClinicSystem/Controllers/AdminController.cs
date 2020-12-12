@@ -18,10 +18,12 @@ namespace ClinicSystem.Controllers
     public partial class AdminController : ControllerBase
     {
         private readonly IUsersService _usersService;
+        private readonly IAuthService _authService;
 
-        public AdminController(IUsersService usersService)
+        public AdminController(IUsersService usersService, IAuthService authService)
         {
             _usersService = usersService;
+            _authService = authService;
         }
 
         [HttpGet("users")]
@@ -67,6 +69,24 @@ namespace ClinicSystem.Controllers
             var result = await _usersService.Delete(userId);
             if (result == null) return NotFound(new Error("User not found"));
             return Ok();
+        }
+
+        [HttpPost("users")]
+        [ProducesResponseType(typeof(UserDto), 200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<ActionResult> AddUser([FromBody] RegisterDto credentials)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new Error("Invalid credentials"));
+            }
+
+            if (await _authService.UserExists(credentials.Login))
+            {
+                return BadRequest(new Error("User with this login already exists"));
+            }
+            var user = await _authService.Register(credentials);
+            return Ok(user);
         }
 
     }

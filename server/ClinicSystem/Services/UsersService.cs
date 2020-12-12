@@ -1,5 +1,6 @@
 ﻿using ClinicSystem.Database;
 using ClinicSystem.DTO;
+using ClinicSystem.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -36,14 +37,14 @@ namespace ClinicSystem.Services
             return account.AccountId;
         }
 
-        public async Task<UserDto> EditUserDto(int userId, EditUserDto editUser)
+        public async Task<UserDto> EditUser(int userId, EditUserDto editUser)
         {
-
             var account = await _ctx.Accounts.FindAsync(userId);
             if (account == null) return null;
             if (!string.IsNullOrEmpty(editUser.Fullname))
             {
-                account.AccountFullname = editUser.Fullname;
+                var rsa = new RSAHandler();
+                account.AccountFullname = rsa.Encrypt(editUser.Fullname);
             }
             if (editUser.Birthdate != null)
             {

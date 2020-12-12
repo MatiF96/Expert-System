@@ -70,5 +70,17 @@ namespace ClinicSystem.Controllers
             if (user == null) return NotFound(new Error("User not found"));
             return Ok(user);
         }
+
+        [Authorize]
+        [HttpPost("changePassword")]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<ActionResult> ChangePassword([FromBody] ChangePasswordDto passwordDto)
+        {
+            var userId = int.Parse(User.Claims.First(i => i.Type == ClaimTypes.Sid).Value);
+            var result = await _authService.ChangePassword(userId, passwordDto);
+            if (result) return Ok();
+            else return BadRequest(new Error("Incorrect password"));
+        }
+
     }
 }
