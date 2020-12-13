@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeuralNet
+namespace ClinicSystem.NeuralNetwork
 {
     interface INNetwork
     {
         INeuralNetwork Network { get; }
-        Task<TrainingSessionResult> Train(ITrainingDataset dataset);
-        bool Decide(float[] input);
-        bool CheckPatient(float[] input);
+        Task<TrainingSessionResult> Train(ITrainingDataset dataset, int epochs);
+        (bool, float) Decide(float[] input);
+        Task<(bool, float)> CheckPatient(float[] input);
     }
 }

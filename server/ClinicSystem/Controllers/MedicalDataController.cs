@@ -1,5 +1,6 @@
 ﻿using ClinicSystem.DTO;
 using ClinicSystem.Services;
+using ClinicSystem.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,18 +23,25 @@ namespace ClinicSystem.Controllers
             _neuralNetworkService = neuralNetworkService;
         }
 
-        [HttpGet("train")]
+        [HttpPost("train")]
         [ProducesResponseType(typeof(TrainingResult), 200)]
-        public ActionResult TrainModel()
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<ActionResult> TrainModel([FromBody] TrainingRequest request)
         {
-            return Ok();
+            if(request.Epochs == 0)
+            {
+                return BadRequest(new Error("Provide positive number of epochs"));
+            }
+
+            var result = request.Epochs != null ? await _neuralNetworkService.Train((int)request.Epochs) : await _neuralNetworkService.Train();
+            return Ok(result);
         }
 
         [HttpPost("result")]
         [ProducesResponseType(typeof(DecisionResult), 200)]
-        public ActionResult GetResult([FromBody] NeuralNetworkInput input)
+        public async Task<ActionResult> GetResult([FromBody] NeuralNetworkInput input)
         {
-            var result = _neuralNetworkService.GetDecision(input);
+            var result = await _neuralNetworkService.GetDecisionAsync(input);
             return Ok(result);
         }
     }
