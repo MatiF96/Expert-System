@@ -7,8 +7,10 @@ namespace ClinicSystem.DTO
 {
     public class TrainingResult
     {
+        public float TrainingDatasetScore { get; set; }
+        public float TestDatasetScore { get; set; }
         public int CompletedEpochs { get; set; }
-        public TimeSpan TrainingTime { get; set; }
+        public double TrainingTime { get; set; }
         public List<EvaulationResult> ValidationReports { get; set; }
         public List<EvaulationResult> TestReports { get; set; }
 

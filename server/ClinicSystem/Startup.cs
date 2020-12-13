@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClinicSystem.Database;
 using ClinicSystem.DTO;
+using ClinicSystem.NeuralNetwork;
 using ClinicSystem.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -108,7 +109,7 @@ namespace ClinicSystem
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IAppointmentsService, AppointmentsService>();
             services.AddScoped<IUsersService, UsersService>();
-            //services.AddScoped<INNetwork, NNetwork>();
+            services.AddSingleton<NNetwork>();
             services.AddScoped<INeuralNetworkService, NeuralNetworkService>();
         }
 

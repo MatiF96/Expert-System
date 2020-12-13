@@ -1,4 +1,6 @@
 ﻿using ClinicSystem.DTO;
+using ClinicSystem.NeuralNetwork;
+using NeuralNetworkNET.APIs.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,64 +10,47 @@ namespace ClinicSystem.Services
 {
     public class NeuralNetworkService : INeuralNetworkService
     {
-        //private readonly INNetwork _nNetwork;
+        private readonly NNetwork _nNetwork;
 
-        //public NeuralNetworkService(INNetwork nNetwork)
-        //{
-        //    _nNetwork = nNetwork;
-        //}
-
-        public DecisionResult GetDecision(NeuralNetworkInput input)
+        public NeuralNetworkService(NNetwork nNetwork)
         {
-            //var result = _nNetwork.Decide(input.ToInputData());
+            _nNetwork = nNetwork;
+        }
+
+        public async Task<DecisionResult> GetDecisionAsync(NeuralNetworkInput input)
+        {
+            var result = await _nNetwork.CheckPatient(input.ToInputData());
             return new DecisionResult
             {
-                Decision = true,
-                Propability = 0.7f
+                Decision = result.Item1,
+                Propability = result.Item2
             };
         }
 
-        public async Task<TrainingResult> Train()
+        public async Task<TrainingResult> Train(int epochs)
         {
-            //TrainingSessionResult trainingResult = await _nNetwork.Train();
+            var trainingResult = await _nNetwork.Train(epochs);
 
-            //var result = new TrainingResult
-            //{
-            //    CompletedEpochs = trainingResult.CompletedEpochs,
-            //    TrainingTime = trainingResult.TrainingTime,
-            //    TestReports = trainingResult.TestReports.Select(r => new EvaulationResult
-            //    {
-            //        Accuraty = r.Accuracy,
-            //        Cost = r.Cost
-            //    }).ToList(),
-            //    ValidationReports = trainingResult.ValidationReports.Select(r => new EvaulationResult
-            //    {
-            //        Accuraty = r.Accuracy,
-            //        Cost = r.Cost
-            //    }).ToList(),
-            //};
+            var result = new TrainingResult
+            {
+                TestDatasetScore = trainingResult.TestDatasetScore,
+                TrainingDatasetScore = trainingResult.TrainingDatasetScore,
+                CompletedEpochs = trainingResult.SessionResult.CompletedEpochs,
+                TrainingTime = trainingResult.SessionResult.TrainingTime.TotalSeconds,
+                TestReports = trainingResult.SessionResult.TestReports.Select(r => new EvaulationResult
+                {
+                    Accuraty = r.Accuracy,
+                    Cost = r.Cost
+                }).ToList(),
+                ValidationReports = trainingResult.SessionResult.ValidationReports.Select(r => new EvaulationResult
+                {
+                    Accuraty = r.Accuracy,
+                    Cost = r.Cost
+                }).ToList(),
+            };
 
-
-
-            return null;
+            return result;
         }
 
     }
 }
-
-/*
- * new EvaulationResult
-                {
-                    Accuraty = r.Accuracy,
-                    Cost = r.Cost
-                }
-(r =>
-                {
-                    new EvaulationResult
-                    {
-                        Accuraty = r.Accuracy,
-                        Cost = r.Cost
-                    };
-                })
-
- */

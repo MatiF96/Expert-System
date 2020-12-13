@@ -8,7 +8,7 @@ namespace ClinicSystem.Services
 {
     public interface INeuralNetworkService
     {
-        Task<TrainingResult> Train();
-        DecisionResult GetDecision(NeuralNetworkInput input);
+        Task<TrainingResult> Train(int epochs = 1000);
+        Task<DecisionResult> GetDecisionAsync(NeuralNetworkInput input);
     }
 }

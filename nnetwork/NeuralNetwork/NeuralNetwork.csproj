@@ -9,4 +9,10 @@
     <PackageReference Include="NeuralNetwork.NET" Version="2.1.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="diabetes.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
