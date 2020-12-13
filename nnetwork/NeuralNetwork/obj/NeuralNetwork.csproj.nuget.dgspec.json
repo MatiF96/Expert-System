@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matif\\source\\repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj": {}
+    "C:\\Users\\matif\\Source\\Repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matif\\source\\repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj": {
+    "C:\\Users\\matif\\Source\\Repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matif\\source\\repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj",
+        "projectUniqueName": "C:\\Users\\matif\\Source\\Repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj",
         "projectName": "NeuralNetwork",
-        "projectPath": "C:\\Users\\matif\\source\\repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj",
+        "projectPath": "C:\\Users\\matif\\Source\\Repos\\Expert-System\\nnetwork\\NeuralNetwork\\NeuralNetwork.csproj",
         "packagesPath": "C:\\Users\\matif\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matif\\source\\repos\\Expert-System\\nnetwork\\NeuralNetwork\\obj\\",
+        "outputPath": "C:\\Users\\matif\\Source\\Repos\\Expert-System\\nnetwork\\NeuralNetwork\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
