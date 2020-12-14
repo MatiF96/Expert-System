@@ -30,7 +30,7 @@ namespace ClinicSystem.Services
             };
 
             var result = await _ctx.Appointments.AddAsync(appointment);
-
+            await _ctx.SaveChangesAsync();
             return new AppointmentDto(result.Entity);
         }
 

@@ -35,5 +35,16 @@ namespace ClinicSystem.Controllers
             var result = await _usersService.EditUser(userId, editUserDto);
             return Ok(result);
         }
+
+        [HttpGet("patients")]
+        [Authorize(Policy = "Doctor")]
+        [ProducesResponseType(typeof(List<UserDto>), 200)]
+        [ProducesResponseType(typeof(Error), 404)]
+        [ProducesResponseType(401)]
+        public async Task<ActionResult> GetPatients()
+        {
+            var result = await _usersService.GetPatients();
+            return Ok(result);
+        }
     }
 }

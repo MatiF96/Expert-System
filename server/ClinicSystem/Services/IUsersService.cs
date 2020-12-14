@@ -13,5 +13,6 @@ namespace ClinicSystem.Services
         Task<UserDto> ChangeRole(int userId, string role);
         Task<int?> Delete(int userId);
         Task<UserDto> EditUser(int userId, EditUserDto editUser);
+        Task<List<UserDto>> GetPatients();
     }
 }

@@ -73,9 +73,8 @@ namespace ClinicSystem.Controllers
         {
             var userId = int.Parse(User.Claims.First(i => i.Type == ClaimTypes.Sid).Value);
             var role = User.Claims.First(i => i.Type == ClaimTypes.Role).Value;
-            return role != UserRole.Patient
-                ? Ok(await _appointmentsService.GetDoctorAppointments(userId))
-                : Ok(await _appointmentsService.GetPatientAppointments(userId));
+            var result = role != UserRole.Patient ? await _appointmentsService.GetDoctorAppointments(userId) : await _appointmentsService.GetPatientAppointments(userId);
+            return Ok(result);
         }
 
         [HttpGet]
@@ -85,7 +84,8 @@ namespace ClinicSystem.Controllers
         [ProducesResponseType(401)]
         public async Task<ActionResult> GetAppointments()
         {
-            return Ok(await _appointmentsService.GetAll());
+            var result = await _appointmentsService.GetAll();
+            return Ok(result);
         }
 
         [HttpGet("{appointmentId}")]
@@ -99,12 +99,5 @@ namespace ClinicSystem.Controllers
             if (result == null) return NotFound(new Error("Appointment not found"));
             return Ok(result);
         }
-
-
-
-
-
-
-
     }
 }

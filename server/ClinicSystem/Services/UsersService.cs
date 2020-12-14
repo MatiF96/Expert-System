@@ -67,5 +67,10 @@ namespace ClinicSystem.Services
             return users.Select(u => new UserDto(u)).ToList();
         }
 
+        public async Task<List<UserDto>> GetPatients()
+        {
+            List<Account> users = await _ctx.Accounts.Where(a => a.AccountType == UserRole.Patient).ToListAsync();
+            return users.Select(u => new UserDto(u)).ToList();
+        }
     }
 }
