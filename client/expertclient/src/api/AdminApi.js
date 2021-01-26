@@ -1,34 +1,36 @@
 import axios from "axios";
 
-const token = localStorage.getItem('token');
+const createAuthAxios = () => {
 
-const authAxios = axios.create({
-  baseURL: "/api",
-  headers: {
-    "Content-type": "application/json",
-    "Authorization": `Bearer ${token}`
+  const token = localStorage.getItem('token');
+
+  return axios.create({
+    baseURL: "/api",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }})
   }
-});
 
 
-const getUsers = () => {
-  return authAxios.get("/Admin/users");
+const getUsers = async () => {
+  return await createAuthAxios().get("/Admin/users");
 };
 
-const createUser = data => {
-    return authAxios.post("/Admin/users", data);
+const createUser = async data => {
+    return await createAuthAxios().post("/Admin/users", data);
 };
 
-const getUser = (id) => {
-  return authAxios.get(`/Admin/users/${id}`);
+const getUser = async (id) => {
+  return await createAuthAxios().get(`/Admin/users/${id}`);
 };
 
-const removeUser = id => {
-  return authAxios.delete(`/Admin/users/${id}`);
+const removeUser = async id => {
+  return await createAuthAxios().delete(`/Admin/users/${id}`);
 };
 
-const updateRole = (id, data) => {
-  return authAxios.post(`/Admin/users/${id}/role`, data);
+const updateRole = async (id, data) => {
+  return await createAuthAxios().post(`/Admin/users/${id}/role`, data);
 };
 
 // eslint-disable-next-line

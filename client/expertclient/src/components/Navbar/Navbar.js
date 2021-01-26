@@ -1,57 +1,80 @@
-import React, { useContext, useEffect } from 'react';
-import NavItem from '../NavItem'
-import {Container, Menu, AuthContainer, StyledButton} from './styled'
-import {PagesContext} from '../../contexts/PagesContext';
-import {UserContext} from '../../contexts/UserContext';
-import {withRouter} from "react-router-dom"
-import { StyledLink } from '../NavItem/styled';
+import React, { useContext, useEffect } from "react";
+import {
+  Container,
+  Menu,
+  NavItem,
+  AuthContainer,
+  LoginText,
+  StyledButton,
+} from "./styled";
+import { PagesContext } from "../../contexts/PagesContext";
+import { UserContext } from "../../contexts/UserContext";
+import AuthApi from "../../api/AuthApi";
+
+import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Navbar = (props) => {
   const { pages } = useContext(PagesContext);
-  const { user, logout, saveUser, whoAmI } = useContext(UserContext);
+  const { user, saveUser } = useContext(UserContext);
 
   const handleLogout = () => {
-    logout()
+    AuthApi.logout();
+    saveUser(null)
     props.history.push("/");
-  }
+  };
 
-  const getCurrentUser = async () => {
-    let currentUser = await whoAmI()
-    saveUser(currentUser)
-  }
-// eslint-disable-next-line
-  useEffect(() => getCurrentUser(),[])
+  useEffect(() => {
+    async function getCurrentUser() {
+      await AuthApi.whoami().then(response => {
+        if(response)
+        {
+          saveUser(response.data)
+        }
+      });
+    }
+    getCurrentUser();
+  }, []);
+
   return (
-  <Container>
+    <Container>
+      <AuthContainer>
+        {user ? (
+          <>
+            <LoginText>Zalogowany jako: {user.login} ({user.accountType})</LoginText>
+            <StyledButton to="/" onClick={handleLogout}>
+              Wyloguj
+            </StyledButton>
+          </>
+        ) : (
+          <>
+            <StyledButton to="/login">Zaloguj</StyledButton>
+            <StyledButton to="/register">Rejestracja</StyledButton>
+          </>
+        )}
+      </AuthContainer>
       <Menu>
-        {pages.map((page) => 
-          !page.role?
-            <NavItem key={page.url} href={page.url}>{page.label}</NavItem> // PUBLIC NAVLINKS
-          :
-          (user && (user.accountType === page.role ))? // PROTECTED NAVLINKS
-            <NavItem key={page.url} href={page.url}>{page.label}</NavItem>
-          :
-          null
+        {pages.map((page) =>
+          !page.role ? (
+            <NavItem key={page.url}>
+              <Link to={page.url}>
+                <page.icon />
+                {page.label}
+              </Link>
+            </NavItem> // PUBLIC NAVLINKS
+          ) : user && user.accountType === page.role ? ( // PROTECTED NAVLINKS
+            <NavItem key={page.url}>
+              <Link to={page.url}>
+                <page.icon />
+                {page.label}
+              </Link>
+            </NavItem>
+          ) : null
         )}
       </Menu>
-      <AuthContainer>
-        {user?
-          <>
-            <p>Zalogowany jako {user.login}</p>
-            <StyledButton onClick={handleLogout}>Wyloguj</StyledButton>
-          </>
-          :
-          <>
-            <StyledLink to="/login">
-              <StyledButton>Zaloguj</StyledButton>
-            </StyledLink>
-            <StyledLink to="/register">
-              <StyledButton>Rejestracja</StyledButton>
-            </StyledLink>
-          </>
-        }
-      </AuthContainer>
-  </Container>
-)};
+    </Container>
+  );
+};
 
 export default withRouter(Navbar);

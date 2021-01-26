@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Container, CenterContainer, StyledForm,  Text, StyledButton, Label, Alert, Message} from './styled';
+import {Container, StyledForm,  Text, StyledButton, Label, Alert, Message} from './styled';
 import { withRouter } from "react-router-dom"
 import AuthApi from '../../api/AuthApi'
 
@@ -20,7 +20,7 @@ const RegisterForm = (props) => {
       props.history.push("/");
     },
     error => {
-      console.log(error)
+      console.log("Nie udalo sie zarejestrować",error)
       setShowAlert(true)
     })
   }
@@ -36,7 +36,6 @@ const RegisterForm = (props) => {
 
   return (
     <Container>
-      <CenterContainer>
         <Message>Zarejestruj się!</Message>
         <StyledForm onSubmit={handleSubmit}>
             <Label type="text">Login:</Label>
@@ -46,7 +45,7 @@ const RegisterForm = (props) => {
             name="login"
             value={login}
             onChange={handleChange}
-            placeholder="Wpisz nowy login"
+            placeholder="Wpisz login"
             />
             <Label>Hasło:</Label>
             <Text 
@@ -60,7 +59,6 @@ const RegisterForm = (props) => {
             <StyledButton type="submit" >Zarejestruj</StyledButton>
             {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
         </StyledForm>
-      </CenterContainer>
     </Container>
 )};
 

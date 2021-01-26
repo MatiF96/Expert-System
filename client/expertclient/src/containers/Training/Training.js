@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Container, CenterContainer, Wrapper, Title, StyledButton, Text} from './styled'
+import {Container, Wrapper, Title, StyledButton, Text} from './styled'
 import MedicalDataApi from "../../api/MedicalDataApi"
 
 const Training = () => {
@@ -33,13 +33,11 @@ const Training = () => {
 
   return (
     <Container>
-      <CenterContainer>
         <Wrapper>
         <Title>Trenowanie sieci:</Title>
         <StyledButton onClick={trainData}>Start</StyledButton>
         {showResult}
         </Wrapper>
-      </CenterContainer>
     </Container>
 )};
 

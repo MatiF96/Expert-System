@@ -1,80 +1,77 @@
-import styled from 'styled-components'
-import { TextField, Button } from '@material-ui/core';
+import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    min-width: 740px;
-`
-
-export const CenterContainer = styled.div`
-    display: flex;
-    min-height: 100vh;
-    width: 1500px;
-    flex-direction: column;
-    align-items: center;
-    background: #ff80aa;
-    padding: 20px 50px 50px 30px;
-`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  color: black;
+  overflow: hidden;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 2px;
+`;
 
 export const GroupInputs = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-right: 100px;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
 
 export const StyledForm = styled.form`
-    display: flex;
-    width: 90%;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    background: #ff99bb;
-    border-radius: 20px;
-    margin: 20px;
-`
-
-export const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  height: 80vh;
+  width: 90%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(7px);
+  overflow: hidden;
+  margin-bottom: 60px;
+`;
 
 export const Title = styled.h1`
-    font-size: 2.2em;
-    padding-bottom: 15px;
-`
+  font-size: 4.2em;
+  padding-bottom: 15px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 3px;
+`;
 
-export const Text = styled(TextField)`
-    &&{
-        min-width: 500px;
-        padding: 20px;
-        background: #ffb3d9;
-        border-radius: 30px;
-        margin-bottom: 10px;
-    }
-`
 
-export const StyledButton = styled(Button)`
-    &&{
-    color: #f1f1f1;
-    background: #ff3377;
-    font-size: 1.6rem;
-    font-weight: bold;
-    padding: 20px 50px;
-    margin: 20px;
-    margin-bottom: 40px;
-    &:hover
-    {
-        background: #ff3377;
-    }
-    }
+export const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 10px 40px;
+  background: ${({theme}) => theme.colors.secondary};
+  border: 4px solid white;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+
+  &:hover{
+      background: ${({theme}) => theme.colors.hover};
+  }
 `
 
 export const Label = styled.p`
-    font-size: 2.2em;
-    font-weight: bold;
-    margin: 5px;
-`
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: 5px;
+`;

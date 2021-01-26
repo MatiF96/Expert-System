@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from '../../containers/LoginForm/styled';
 import {Container,Label, Field} from "./styled"
 
 const Input = ({text,value,handleChange}) => {

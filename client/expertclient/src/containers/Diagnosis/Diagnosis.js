@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Container, CenterContainer, Wrapper, Title, StyledButton,GroupInputs, Text, StyledForm, Label} from './styled'
+import {Container, Title, StyledButton,GroupInputs, StyledForm} from './styled'
 import MedicalDataApi from "../../api/MedicalDataApi"
 import Input from "../../components/Input"
 
@@ -51,15 +51,15 @@ const Diagnosis = () => {
   const showResult =
     result?
     <>
-      <Title>Decision: {result.decision?"True":"False"} | Propability: {result.propability}</Title>
+      <Title>Decyzja: {result.decision?"True":"False"} Prawdopodobieństwo: {result.propability}</Title>
     </>:
     null
   
   return (
     <Container>
-      <CenterContainer>
-        <Wrapper>
-        <Title>Wpisz informacje:</Title>
+      {!result?
+      <>
+      <Title>Wpisz informacje:</Title>
         <StyledForm onSubmit={handleSubmit}>
           <GroupInputs>
           <Input text="pregnancies" value={data.pregnancies} handleChange={handleChange} />
@@ -72,10 +72,13 @@ const Diagnosis = () => {
           <Input text="age" value={data.age} handleChange={handleChange}/>
           </GroupInputs>
           <StyledButton type="submit" >Zatwierdź</StyledButton>
-          {showResult}
         </StyledForm>
-        </Wrapper>
-      </CenterContainer>
+      </>
+      :
+      <>
+      {showResult}
+      <StyledButton onClick={() => setResult(null)} >Powtórz badanie</StyledButton>
+      </>}
     </Container>
 )};
 

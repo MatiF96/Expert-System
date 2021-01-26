@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {Switch, Route} from "react-router-dom";
 
 import Home from '../../containers/Home';
@@ -13,6 +13,7 @@ import RegisterForm from "../../containers/RegisterForm";
 import { PatientRoute } from '../../utils/PatientRoute';
 import { DoctorRoute } from '../../utils/DoctorRoute';
 import { AdminRoute } from '../../utils/AdminRoute';
+
 
 const AppRouter = () => {
   return (

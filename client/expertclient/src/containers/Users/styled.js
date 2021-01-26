@@ -2,19 +2,12 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
+    width: 100%;
+    height: 100vh;
     justify-content: center;
-    min-width: 740px;
+    align-items: center;
 `
 
-export const CenterContainer = styled.div`
-    display: flex;
-    min-height: 100vh;
-    width: 1500px;
-    flex-direction: column;
-    align-items: center;
-    background: #ff80aa;
-    padding: 20px 50px 50px 30px;
-`
 
 export const Wrapper = styled.div`
     display: flex;

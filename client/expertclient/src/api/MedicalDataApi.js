@@ -3,7 +3,7 @@ import axios from "axios";
 const token = localStorage.getItem('token');
 
 const authAxios = axios.create({
-  baseURL: "/api",
+  baseURL: "/api/DecisionSystem",
   headers: {
     "Content-type": "application/json",
     "Authorization": `Bearer ${token}`
@@ -11,11 +11,11 @@ const authAxios = axios.create({
 });
 
   const train = data => {
-    return authAxios.post("/MedicalData/train", data);
+    return authAxios.post("/train", data);
   };
 
   const result = data => {
-    return authAxios.post("/MedicalData/result", data);
+    return authAxios.post("/result", data);
   };
 
 // eslint-disable-next-line

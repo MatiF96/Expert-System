@@ -1,5 +1,4 @@
 import React, { createContext, useState} from 'react';
-import AuthApi from '../api/AuthApi'
 
 export const UserContext = createContext();
 
@@ -7,22 +6,12 @@ const UserContextProvider = ({ children }) => {
     // eslint-disable-next-line
     const [user, setUser] = useState(null);
 
-    const saveUser = newUser => setUser(newUser)
-        
-    const logout = () => {
-        setUser(null)
-        AuthApi.logout()
+    const saveUser = newUser => {
+        setUser(newUser)
     }
-
-    const whoAmI = () => AuthApi.whoami()
-    
-    
-    // useEffect(()=>{
-    //     console.log("New user:",user)
-    // },[user])
-
+        
     return (
-        <UserContext.Provider value={{user, saveUser, logout, whoAmI}}>
+        <UserContext.Provider value={{user, saveUser}}>
             {children}
         </UserContext.Provider>
     )

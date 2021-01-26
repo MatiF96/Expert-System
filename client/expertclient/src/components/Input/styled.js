@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { TextField, Button } from '@material-ui/core';
 
 export const Container = styled.div`
    display: flex;
    flex-direction: row;
    justify-content: flex-start; 
+   margin: 5px;
 `
 
 export const Label = styled.p`
@@ -13,11 +13,18 @@ export const Label = styled.p`
     margin: 5px;
 `
 
-export const Field = styled(TextField)`
-    &&{
-        padding: 20px;
-        background: #ffb3d9;
-        border-radius: 30px;
-        margin-bottom: 10px;
-    }
-`
+export const Field = styled.input`
+font-size: 2em;
+display: flex;
+justify-content: center;
+width: 600px;
+height: 90px;
+border-radius: 10px;
+border: 1px solid ${({ theme }) => theme.colors.primary};
+background: inherit;
+color: ${({ theme }) => theme.colors.primary};
+
+&::placeholder {
+font-size: 0.9em;
+}
+`;
