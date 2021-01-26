@@ -6,6 +6,7 @@ import Appointments from '../../containers/Appointments';
 import Users from '../../containers/Users';
 import Training from '../../containers/Training';
 import Diagnosis from '../../containers/Diagnosis';
+import PatientTerms from '../../containers/PatientTerms';
 
 import LoginForm from "../../containers/LoginForm";
 import RegisterForm from "../../containers/RegisterForm";
@@ -18,8 +19,9 @@ import { AdminRoute } from '../../utils/AdminRoute';
 const AppRouter = () => {
   return (
     <Switch>
-        <DoctorRoute exact path='/diagnosis' component={Diagnosis} />
+        <PatientRoute exact path='/terms' component={PatientTerms} />
 
+        <DoctorRoute exact path='/diagnosis' component={Diagnosis} />
         <DoctorRoute exact path='/appointments' component={Appointments} />
         <DoctorRoute exact path='/training' component={Training} />
 

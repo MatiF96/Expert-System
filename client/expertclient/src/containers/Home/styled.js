@@ -10,15 +10,12 @@ export const Container = styled.div`
   font-size: 50px;
   color: black;
   overflow:hidden;
-  -webkit-text-fill-color: white;
-  -webkit-text-stroke-width: 3px;
 `;
 
 export const Content = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background: white;
   height: 70vh;
   width: 90%;
@@ -34,12 +31,70 @@ export const Content = styled.div`
   overflow: hidden;
 `;
 
+export const SecondContent = styled(Content)`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const Title = styled.h1`
-  font-size: 2.8em;
+  font-size: 1.8em;
   padding-bottom: 15px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 2px;
+`;
+
+export const Description = styled.h2`
+  font-size: 1.2em;
+  padding-bottom: 15px;
+  margin: 40px 0px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+`;
+
+export const Info = styled.p`
+  font-size: 1.5em;
+  padding-bottom: 15px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 4px;
 `;
 
 export const Text = styled.h2`
-  font-size: 1.8em;
+  font-size: 1.5em;
   padding-bottom: 15px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  padding: 0px 20px;
+  background: white;
+  opacity: 0.9;
+  border-right: 2px solid black;
+`;
+
+export const Image = styled.img`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+  background: url("./images/profile.png");
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-position: center;
+  border: 4px solid black;
+
+`;
+
+export const ProfileContainer = styled.div`
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

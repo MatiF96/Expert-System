@@ -11,7 +11,7 @@ export const Container = styled.div`
   color: black;
   overflow: hidden;
   -webkit-text-fill-color: white;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 1px;
 `;
 
 export const GroupInputs = styled.div`
@@ -45,7 +45,7 @@ export const Title = styled.h1`
   font-size: 4.2em;
   padding-bottom: 15px;
   -webkit-text-fill-color: white;
-  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-width: 2px;
 `;
 
 

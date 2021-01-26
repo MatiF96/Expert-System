@@ -51,7 +51,8 @@ const Diagnosis = () => {
   const showResult =
     result?
     <>
-      <Title>Decyzja: {result.decision?"True":"False"} Prawdopodobieństwo: {result.propability}</Title>
+      <Title>Decyzja: {result.decision?"Pozytywny":"Negatywny"}</Title>
+      <Title>Prawdopodobieństwo: {result.propability}</Title>
     </>:
     null
   

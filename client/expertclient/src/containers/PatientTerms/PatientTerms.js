@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Wrapper, Title } from "./styled";
-import DoctorApi from "./../../api/DoctorApi"
+import DoctorApi from "../../api/DoctorApi"
 
-const Appointments = () => {
+const PatientTerms = () => {
   const [appointments, setAppointments] = useState([]);
 
   const getAppointments = () => {
@@ -30,12 +30,12 @@ const Appointments = () => {
     <Container>
       <Wrapper>
         <Title>Zaplanowane wizyty:</Title>
-        {appointments.map( appointment => (
-            <span>Dane pacjenta: {appointment.patient.fullname}, Data wizyty: {appointment.date}</span>
+        {appointments.map( (appointment, index) => (
+            <span key={index}> Lekarz: {appointment.doctor.fullname}, dnia: {appointment.date}</span>
           ))}
       </Wrapper>
     </Container>
   );
 };
 
-export default Appointments;
+export default PatientTerms;
